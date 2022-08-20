@@ -22,7 +22,7 @@ int floor_l(double, unsigned int);
 int main() 
 {
 
-
+    test;
     return 0;
 }
 
