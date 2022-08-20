@@ -1,0 +1,2 @@
+1. Como se corrije el ejercicio 1d para que funcione bien? sin sacar los a++ o
+++a.
