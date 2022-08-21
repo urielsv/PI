@@ -20,16 +20,48 @@
 #include "/home/uriel/PI/getnum.h"
 
 double redond(double, unsigned int);
+void menu();
 
 int main() 
 {
-    double a = getfloat("Numero a redondear: ");
-    int b = getint("Cantidad de centesimos: ");
-    printf("%f", redond(a, b));
+    double a = 467.93819;
+    menu(); 
+    
+    unsigned int opt = getint("Opcion (1-4): ");
+    switch (opt) {
+        case 1: 
+            a = redond(a, 0); 
+            break;
+        case 2:
+            a = redond(a, 1);
+            break;
+        case 3:
+            a = redond(a, 2);
+            break;
+        case 4:
+            a = redond(a, 3);
+            break;
+        default:
+            printf("Opcion invalida.");
+    }
+    printf("%f", a);
     return 0;
 }
+
+void menu() 
+{ 
+    printf("\n1. Redondeo al entero mas cercano\n"
+            "2. Redondeo a la decima mas cercana\n"
+            "3. Redondeo a la centesima mas cercana\n"
+            "4. Redondeo a la milesima mas cercana.\n");
+   }
+
 double redond(double num, unsigned int cent)
 {
-    int exp = pow(10, cent); 
-    return floor( num * exp + .5) / exp;
+    int pot = 1;
+    for (int i=0; i != cent; i++) 
+        pot *= 10;
+
+    num = floor( num * pot + .5) / pot;
+    return num;
 }
