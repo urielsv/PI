@@ -26,6 +26,8 @@ int main()
     int sumNum, sumDen;
     menu();
     
+    /* Como puedo pasar este switch a un menu? Se deberia hacer? (seria front
+     * o back)? */
     opt = getint("Opcion (1-3): ");
     switch(opt) { 
         case 1:
@@ -36,6 +38,7 @@ int main()
                     return 1;
                 }
             minFrac(&nu1, &de1);
+            /* Deberia hacer una macro para formatear el caso de nu1 == nu2? */
             printf("%d/%d\n", nu1, de1);
             break;
         case 2:

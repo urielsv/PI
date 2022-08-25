@@ -1,18 +1,19 @@
 #include <stdio.h>
 
+
+void a(int []);
+
 int main()
 {
-    int x = -3;
-    int y = 12;
-    int *px, *py;
-     
-    px = &x;
-    py = &y;
-    (*px)++;
-    *py = 50;
-    *px = *py; 
-    px = py;
-    (*px)++;
-    printf("%d, %d", *px, *py);
+    int arr[8];  
+    a(arr); 
     return 0;
+}
+
+
+void a(int arr[])
+{
+    const unsigned int arrSize = (sizeof(arr)/sizeof(arr[0])); 
+    printf("Size: %d\n", arrSize);
+
 }

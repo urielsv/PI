@@ -6,10 +6,21 @@
  */
 
 #include <stdio.h>
-#include "/home/urielsv/PI/getnum.h"
+#include "/home/uriel/PI/getnum.h"
 #include <math.h>
 
 #define         EPSILON     0.0000000001
+
+double pot(double, int);
+
+int main()
+{
+    double a = getdouble("");
+    int b = getint("");
+    
+    printf("%g", pot(a,b));
+    return 0;
+}
 
 // Disclaimer: no hay chance que se me haya ocurrido lo de fabs xd.
 double pot(double base, int exp) 
@@ -29,13 +40,4 @@ double pot(double base, int exp)
         base *= aux;
     } 
     return base;
-}
-
-int main()
-{
-    double a = getdouble("");
-    int b = getint("");
-
-    printf("%g", pot(a,b));
-    return 0;
 }

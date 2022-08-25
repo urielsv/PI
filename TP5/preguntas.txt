@@ -1,2 +1,2 @@
-1. Debemos "pisar" las variables que definimos como static al principio para que
+1. Debemos redeclarar (c/ mismo nombre) las variables que definimos como static al principio para que
 se tomen como locales los valores?
