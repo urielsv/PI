@@ -19,10 +19,13 @@ void elimina(char s1[], char s2[]);
 
 int main()
 {
-    char s[] = "Hola amigues!";
-    elimina(s, "aeiou!");
+    char s[] = "Un string. Con diversas letras y simbolos!!";
+    elimina(s, "aeiou"); // s es ahora "Un strng. Cn dvrss ltrs y smbls!!"
     printf("%s\n", s);
-    puts("TEST");
+    elimina(s, " !."); // s es ahora "UnstrngCndvrssltrsysmbls"
+    printf("%s\n", s);
+    elimina(s, "aeiou"); // s ahora no cambia
+    printf("%s\n", s);
     return 0;
 }
 
