@@ -13,7 +13,6 @@
  */
 
 #include <stdio.h>
-#include <string.h>
 
 void elimina(char s1[], char s2[]);
 
@@ -29,11 +28,11 @@ int main()
     return 0;
 }
 
-
 void elimina(char * str1, char * str2)
 {
     int k = 0;
-    for (int i = 0; str2[i]; i++, k = 0) {  
+    for (int i = 0; str2[i]; i++, k = 0) { 
+        // modularizar
        for (int j = 0; str1[j]; j++) {
            if (str2[i] != str1[j])
                str1[k++] = str1[j];

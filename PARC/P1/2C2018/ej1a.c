@@ -6,8 +6,8 @@
  * Si hubiera números negativos o de más de una cifra, no se completa el armado del número.
  * Si no se pudo armar ningún número, retorna -1.
  */
+
 #include <stdio.h>
-#include <math.h>
 #include <assert.h>
 
 #define FIL     4
@@ -55,12 +55,13 @@ static int crearFila(int m[FIL][COL], int v[FIL])
     for (int i = 0, valid = 1; i < FIL; i++, valid = 1) {
         int suma = 0;
         
-        for (int j = 0; j < COL && valid; j++) {
+        for (int j = 0, pot = 1; j < COL && valid; j++) {
             if (!(m[i][j] >= 0 && m[i][j] <= 9))
                 valid = 0;
 
             if (valid) {
-                suma += m[i][j] * pow(10, (COL-1)-j);
+                suma += m[i][(COL-1)-j] * pot;
+                pot *= 10;
             }
         }
         if (valid) {

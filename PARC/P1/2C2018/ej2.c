@@ -6,4 +6,4 @@
 
 #define     DELTA               ('a' - 'A')
 #define     TO_UPPER(x)         ((x) >= 'a' && (x) =< 'z' ?\
-                                    ((x) - DELTA) : (x))
+                                    (x) - DELTA : (x))
