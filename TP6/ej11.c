@@ -64,8 +64,7 @@ void ordenaMatriz(int matriz[][MAXCOL], int fil, int col, int colOrd)
     for (int i = 1; i < fil; i++) { 
         if (matriz[i][colOrd] < matriz[i-1][colOrd]) {
             moverFila(matriz, i);
-            i = 1; // Preguntar esta forma o hacer otro recorrido para
-                    // checkear.
+            i = 1;
         }
     }
 }
