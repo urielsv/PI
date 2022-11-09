@@ -23,7 +23,7 @@
 #define ANCHO 5
 
 void suavizar(unsigned char img[ALTO][ANCHO], unsigned int w );
-unsigned int average(unsigned char img[ALTO][ANCHO], unsigned int f, unsigned int c, int w);
+unsigned int average(unsigned char img[ALTO][ANCHO], int f, int c, int w);
 
 int equals(unsigned int cols, unsigned char m1[][cols], unsigned char m2[][cols], unsigned int rows) {
   for (int i=0; i < rows; i++) {
@@ -44,7 +44,6 @@ int main(void) {
       {12,14,19,20,22},
       {13,16,19,20,22},
       {14,14,19,21,23}};
- {13,15,18,20,22}o,
   
   suavizar(bmp, 3);
   unsigned char suave[ALTO][ANCHO] =    {
@@ -73,28 +72,25 @@ int main(void) {
   return 0;
 }
 
+
+ 
 #define MAX(a,b)    ((a) > (b) ? (a) : (b))
 #define MIN(a,b)    ((a) < (b) ? (a) : (b))
 #define RAD(a)      ((a)/2)
-unsigned int average(unsigned char img[ALTO][ANCHO], unsigned int f, unsigned int c, int w)
+unsigned int average(unsigned char img[ALTO][ANCHO],  int f,  int c, int w)
 {
     int sum = 0, ctr = 0;
-    const int rowFlag = MIN(f+RAD(w), ALTO-1);
-    const int rowInit = MAX(f-RAD(w), 0);
-    const int colFlag = MIN(c+RAD(w), ANCHO-1);
-    const int colInit = MAX(c-RAD(w), 0);
 
-    for (int i = rowInit; i <= rowFlag; i++) {
-        for (int j = colInit; j <= colFlag; j++) {
+
+    for (int i = MAX(0, f-w); i <= MIN(ALTO-1, f+w); i++) {
+        for (int j = MAX(0, c-w); j <= MIN(ANCHO-1, c+w); j++) {
             sum += img[i][j];
             ctr++;
         }
     }
     return sum / ctr;
 }
-#undef RAD
-#undef MIN
-#undef MAX
+
 
 void suavizar(unsigned char img[ALTO][ANCHO], unsigned int w )
 {
@@ -107,7 +103,7 @@ void suavizar(unsigned char img[ALTO][ANCHO], unsigned int w )
 
     for (int i = 0; i < ALTO; i++) {
         for (int j = 0; j < ANCHO; j++) {
-            suav[i][j] = average(img, i, j, w);
+            suav[i][j] = average(img, i, j, w/2);
         }
     }
 
