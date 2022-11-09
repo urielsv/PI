@@ -2,12 +2,12 @@
 #include <stdlib.h>
 
 typedef struct tCol {
-    unsigned long col;
+    size_t col;
     struct tCol * tail;
 } tCol;
 
 typedef struct tRow{
-    unsigned long row;
+    size_t row;
     struct tRow * tail;
     tCol * firstCol;
 } tRow;
@@ -42,7 +42,7 @@ void freeBoolMatrix(boolMatrixADT m) {
     free(m);
 }
 
-static tCol * deleteCol(tCol * first, unsigned long col) {
+static tCol * deleteCol(tCol * first, size_t col) {
     if ( first == NULL || first->col > col) {
         return first;
     }
@@ -56,7 +56,7 @@ static tCol * deleteCol(tCol * first, unsigned long col) {
     return first;
 }
 
-static tRow * deleteInRow(tRow * first, unsigned long row, unsigned long col) {
+static tRow * deleteInRow(tRow * first, size_t row, size_t col) {
     if(first == NULL || first->row > row) {
         return first;
     }
@@ -73,7 +73,7 @@ static tRow * deleteInRow(tRow * first, unsigned long row, unsigned long col) {
     return first;
 }
 
-void setTrue(boolMatrixADT m, unsigned long row, unsigned long col) {
+void setTrue(boolMatrixADT m, size_t row, size_t col) {
     // Borra el nodo con row si  col era el único elemento de la fila
     m->firstRow = deleteInRow(m->firstRow, row, col);
 }
@@ -92,7 +92,7 @@ static tCol * addCol(tCol * first, unsigned int col) {
     return first;
 }
 
-static tRow * addRow(tRow * first, unsigned long row, unsigned long col) {
+static tRow * addRow(tRow * first, size_t row, size_t col) {
     if ( first == NULL || first->row > row) {
         tRow * aux = malloc(sizeof(*aux));
         aux->row = row;
@@ -107,11 +107,11 @@ static tRow * addRow(tRow * first, unsigned long row, unsigned long col) {
     return first;
 }
 
-void setFalse(boolMatrixADT m, unsigned long  row, unsigned long col) {
+void setFalse(boolMatrixADT m, size_t row, size_t col) {
     m->firstRow = addRow(m->firstRow, row, col);
 }
 
-static int getCol(tCol * first, unsigned long col) {
+static int getCol(tCol * first, size_t col) {
     if (first == NULL)
         return 0;
 
@@ -121,7 +121,7 @@ static int getCol(tCol * first, unsigned long col) {
     return getCol(first->tail, col);
 }
 
-static int getRow(tRow * first, unsigned long row, unsigned long col) {
+static int getRow(tRow * first, size_t row, size_t col) {
     if (first == NULL)
         return 0;
 
@@ -131,7 +131,7 @@ static int getRow(tRow * first, unsigned long row, unsigned long col) {
     return getRow(first->tail, row, col);
 }
 
-int get(const boolMatrixADT m, unsigned long row, unsigned long col) {
+int get(const boolMatrixADT m, size_t row, size_t col) {
     return getRow(m->firstRow, row, col);
 }
 
