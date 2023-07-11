@@ -1,6 +1,7 @@
 #include "random.h"
 #include <stdlib.h>
 #include <time.h>
+// Random library
 
 double
 randNormalize(void) {
